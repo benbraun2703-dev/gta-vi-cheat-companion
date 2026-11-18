@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#090713">
+  <meta name="description" content="Fan-made GTA VI Cheat Companion im Vice-City-inspirierten Neon-Look.">
+  <title>VICE CITY — Cheat Companion</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="topbar">
+    <div class="brand-mark">VI</div>
+    <div class="brand-copy"><div class="eyebrow">THE UNOFFICIAL COMPANION</div><h1>VICE CITY <span>CHEAT COMPANION</span></h1></div>
+    <button class="icon-btn" id="installBtn" aria-label="App installieren" hidden>＋</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-kicker">WELCOME TO THE NEON SIDE</div>
+      <h2>YOUR CITY.<br><em>YOUR RULES.</em></h2>
+      <p>Deine persönliche Sammlung für Cheat-Codes — direkt auf deinem iPhone.</p>
+      <div class="hero-stats">
+        <div><strong id="totalCount">0</strong><small>CHEATS</small></div>
+        <div><strong id="favCount">0</strong><small>FAVORITEN</small></div>
+        <div><strong>OFFLINE</strong><small>READY</small></div>
+      </div>
+    </section>
+
+    <nav class="tabs" aria-label="Hauptnavigation">
+      <button class="tab active" data-tab="library">CHEATS</button>
+      <button class="tab" data-tab="favorites">FAVORITEN</button>
+      <button class="tab" data-tab="about">INFO</button>
+    </nav>
+
+    <section id="libraryPanel" class="panel">
+      <div class="section-heading"><div><div class="eyebrow">YOUR DATABASE</div><h3>Cheat Library</h3></div><button class="add-btn" id="addBtn">＋ ADD</button></div>
+      <label class="search-wrap"><span>⌕</span><input id="searchInput" type="search" placeholder="Cheat, Kategorie oder Plattform suchen…" autocomplete="off"></label>
+      <div class="filters">
+        <select id="platformFilter" aria-label="Plattform"><option>Alle Plattformen</option><option>PS5</option><option>Xbox</option><option>PC</option></select>
+        <select id="categoryFilter" aria-label="Kategorie"><option>Alle Kategorien</option><option>Spieler</option><option>Fahrzeuge</option><option>Waffen</option><option>Welt</option><option>Sonstiges</option></select>
+      </div>
+      <div id="cheatList" class="cheat-list"></div>
+      <p class="fineprint">Codes nur eintragen, wenn du sie aus einer verlässlichen Quelle bestätigt hast.</p>
+    </section>
+
+    <section id="favoritesPanel" class="panel" hidden>
+      <div class="eyebrow">SAVED FOR LATER</div><h3>Deine Favoriten</h3>
+      <div id="favoriteList" class="cheat-list"></div>
+    </section>
+
+    <section id="aboutPanel" class="panel" hidden>
+      <div class="eyebrow">PROJECT NOTES</div><h3>Über diese App</h3>
+      <div class="info-card"><strong>Fan-made Companion</strong><p>Ein unabhängiger Cheat-Code-Katalog im Neon-/Vice-City-inspirierten Stil. Keine Verbindung zu Rockstar Games oder GTA VI.</p></div>
+      <div class="info-card"><strong>Keine erfundenen Cheats</strong><p>Es sind bewusst keine angeblich offiziellen GTA-VI-Codes vorinstalliert. Sobald verlässliche Codes bekannt sind, kannst du sie selbst hinzufügen.</p></div>
+      <div class="info-card"><strong>Offline & privat</strong><p>Deine Einträge werden lokal in diesem Browser gespeichert. Es wird kein Konto benötigt.</p></div>
+      <button class="danger-outline" id="exportBtn">DATEN EXPORTIEREN</button>
+      <button class="danger-outline" id="importBtn">DATEN IMPORTIEREN</button>
+      <input type="file" id="importFile" accept="application/json" hidden>
+    </section>
+  </main>
+
+  <footer>VICE CITY CHEAT COMPANION <span>•</span> FAN PROJECT</footer>
+
+  <dialog id="cheatDialog">
+    <form method="dialog" id="cheatForm">
+      <div class="dialog-head"><div><div class="eyebrow">PERSONAL DATABASE</div><h3>Neuer Cheat</h3></div><button class="close-btn" value="cancel" aria-label="Schließen">×</button></div>
+      <label>Name<input id="cheatTitle" maxlength="70" required placeholder="z. B. Unverwundbarkeit"></label>
+      <label>Code<input id="cheatCode" maxlength="180" required placeholder="Code / Tastenkombination"></label>
+      <div class="form-row">
+        <label>Kategorie<select id="cheatCategory"><option>Spieler</option><option>Fahrzeuge</option><option>Waffen</option><option>Welt</option><option>Sonstiges</option></select></label>
+        <label>Plattform<select id="cheatPlatform"><option>PS5</option><option>Xbox</option><option>PC</option></select></label>
+      </div>
+      <label>Notizen<textarea id="cheatNotes" rows="3" placeholder="Quelle oder zusätzliche Hinweise"></textarea></label>
+      <label class="check-label"><input type="checkbox" id="cheatVerified"> Ich habe diesen Code selbst anhand einer zuverlässigen Quelle geprüft.</label>
+      <button class="primary-btn" id="saveCheat" value="default">SPEICHERN</button>
+    </form>
+  </dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
